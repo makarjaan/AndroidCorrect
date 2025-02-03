@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">homework4</string>
+    <string name="toast_image_info">Изображение уже загружено</string>
+    <string name="urlimage">https://avatars.mds.yandex.net/i?id=a94d968b1a293c873f388ed7c64c1c829cd5a99c-12738984-images-thumbs&amp;n=13</string>
+    <string name="title_ed">Введите текст</string>
+    <string name="title_helper">Заголовок уведомления</string>
+    <string name="text_helper">Текст уведомления</string>
+    <string name="firstBtn_text">Показать уведомление</string>
+    <string name="secondBtn_text">Сбросить цвет</string>
+    <string-array name="planets_array">
+        <item>Max</item>
+        <item>High</item>
+        <item>Default</item>
+        <item>Low</item>
+    </string-array>
+    <string name="toast_info_title">Заголовок уведомления пустой</string>
+    <string name="toast_info_text">Текст уведомления пустой</string>
+    <string name="toast_info_notification_start">Запущено из уведомления</string>
+    <string name="toast_info_get_permissions">Разрешение предоставлено</string>
+</resources>
