@@ -15,13 +15,14 @@ import ru.itis.base.MainActivity
 import ru.itis.di.ServiceLocator
 import ru.itis.homeworklast.R
 import ru.itis.homeworklast.databinding.FragmentAuthorizationBinding
+import ru.itis.util.Keys
 
 
 class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
 
     private var viewBinding: FragmentAuthorizationBinding? = null
     private var userRepository = ServiceLocator.getUserRepository()
-    var pref: SharedPreferences? = null
+    private var pref: SharedPreferences? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -72,7 +73,7 @@ class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
                         }.onFailure { ex ->
                             when (ex) {
                                 is Exception -> {
-                                    Log.e(MainActivity.ERROR_TAG, "${ex.message}", ex)
+                                    Log.e(Keys.ERROR_MESSAGE, "${ex.message}", ex)
                                 }
                             }
                         }

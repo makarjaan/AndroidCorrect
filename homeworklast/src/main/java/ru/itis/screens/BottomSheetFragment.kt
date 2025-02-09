@@ -10,15 +10,15 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.launch
-import ru.itis.base.MainActivity
 import ru.itis.data.entities.BookEntity
 import ru.itis.di.ServiceLocator
 import ru.itis.homeworklast.R
 import ru.itis.homeworklast.databinding.DialigBottomSheetBinding
+import ru.itis.util.Keys
 import java.util.UUID
 
 class BottomSheetFragment(
-    val userId: String? = null
+    private val userId: String? = null
 ) : BottomSheetDialogFragment(R.layout.dialig_bottom_sheet) {
 
     private var viewBinding : DialigBottomSheetBinding? = null
@@ -90,7 +90,7 @@ class BottomSheetFragment(
                             book?.let { bookRepository.saveBook(it) }
                             (parentFragment as? MainPageFragment)?.loadBooks()
                         }.onFailure { ex ->
-                            Log.e(MainActivity.ERROR_TAG, "${resources.getString(R.string.save_err)} ${ex.message}", ex)
+                            Log.e(Keys.ERROR_MESSAGE, "${resources.getString(R.string.save_err)} ${ex.message}", ex)
                             Toast.makeText(context, R.string.book_save_error, Toast.LENGTH_SHORT).show()
                         }
                     }

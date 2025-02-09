@@ -1,18 +1,11 @@
 package ru.itis.screens
 
-
-import android.Manifest
-import android.content.pm.PackageManager
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.material.Surface
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,15 +17,16 @@ import ru.itis.di.ServiceLocator
 import ru.itis.homeworklast.R
 import ru.itis.homeworklast.databinding.FragmentDetailsBinding
 import ru.itis.ui.DetailsPage
+import ru.itis.util.Keys
 
 class DetailsFragment(
     val userName: String,
     val bookId: String
 ) : BaseFragment(R.layout.fragment_details) {
 
-    var viewBinding: FragmentDetailsBinding? = null
+    private var viewBinding: FragmentDetailsBinding? = null
     private var bookRepository = ServiceLocator.getBookRepository()
-    var book: BookEntity? = null
+    private var book: BookEntity? = null
 
 
     override fun onCreateView(
@@ -55,7 +49,7 @@ class DetailsFragment(
             result.onSuccess {
                 initView()
             }.onFailure { ex ->
-                Log.e(MainActivity.ERROR_TAG, "${resources.getString(R.string.load_er)} ${ex.message}", ex)
+                Log.e(Keys.ERROR_MESSAGE, "${resources.getString(R.string.load_er)} ${ex.message}", ex)
             }
         }
     }
@@ -79,12 +73,12 @@ class DetailsFragment(
     }
 
     private fun onReviewUpdated(newReview: String) {
-        Log.d("TEST-TAG", "${bookId} ${newReview}")
+        Log.d("TEST-TAG", "$bookId $newReview")
         lifecycleScope.launch {
             runCatching {
                 bookRepository.setReview(bookId, newReview)
             }.onFailure { ex ->
-                Log.e(MainActivity.ERROR_TAG, "${resources.getString(R.string.revie_err)} ${ex.message}", ex)
+                Log.e(Keys.ERROR_MESSAGE, "${resources.getString(R.string.revie_err)} ${ex.message}", ex)
             }
         }
     }
@@ -94,7 +88,7 @@ class DetailsFragment(
             runCatching {
                 bookRepository.setRating(bookId, newRating)
             }.onFailure { ex ->
-                Log.e(MainActivity.ERROR_TAG, "${resources.getString(R.string.rating_err)} ${ex.message}", ex)
+                Log.e(Keys.ERROR_MESSAGE, "${resources.getString(R.string.rating_err)} ${ex.message}", ex)
             }
         }
     }
@@ -104,7 +98,7 @@ class DetailsFragment(
             kotlin.runCatching {
                 bookRepository.setImage(bookId, newUrl)
             }.onFailure { ex ->
-                Log.e(MainActivity.ERROR_TAG, "${resources.getString(R.string.image_err)} ${ex.message}", ex)
+                Log.e(Keys.ERROR_MESSAGE, "${resources.getString(R.string.image_err)} ${ex.message}", ex)
             }
         }
     }

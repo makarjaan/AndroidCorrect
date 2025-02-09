@@ -16,13 +16,14 @@ import ru.itis.data.entities.UserEntity
 import ru.itis.di.ServiceLocator
 import ru.itis.homeworklast.R
 import ru.itis.homeworklast.databinding.FragmentRegistrationBinding
+import ru.itis.util.Keys
 import java.util.UUID
 
 class RegistrationFragment : Fragment(R.layout.fragment_registration) {
 
     private var viewBinding: FragmentRegistrationBinding? = null
     private var userRepository = ServiceLocator.getUserRepository()
-    var pref: SharedPreferences? = null
+    private var pref: SharedPreferences? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,7 +56,8 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
                 checkConstraints(email, name, passwordFirst, passwordSecond)
 
                 if (email.contains("@") && name.isNotEmpty() && checkPassword(passwordFirst)
-                    && passwordFirst.equals(passwordSecond)) {
+                    && passwordFirst == passwordSecond
+                ) {
 
                     val user = UserEntity(
                         id = UUID.randomUUID().toString(),
@@ -66,7 +68,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
 
                     lifecycleScope.launch {
                         runCatching {
-                            var count = userRepository.userInDataBase(email)
+                            val count = userRepository.userInDataBase(email)
                             if (count == 0) {
                                 userRepository.saveUser(user)
 
@@ -81,7 +83,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
                                 throw Exception(resources.getString(R.string.userindb_info))
                             }
                         }.onFailure { ex ->
-                            Log.e(MainActivity.ERROR_TAG, "${resources.getString(R.string.save_user_error)} ${ex.message}", ex)
+                            Log.e(Keys.ERROR_MESSAGE, "${resources.getString(R.string.save_user_error)} ${ex.message}", ex)
                         }
                     }
                 }
@@ -91,7 +93,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
 
 
 
-    fun checkConstraints(email: String, name: String, passwordFirst: String, passwordSecond: String) {
+    private fun checkConstraints(email: String, name: String, passwordFirst: String, passwordSecond: String) {
         if (!email.contains("@")) {
             viewBinding?.emailInput?.error = resources.getString(R.string.email_error)
         } else {
@@ -110,15 +112,15 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
             viewBinding?.passwordFirstInput?.error = null
         }
 
-        if (!passwordFirst.equals(passwordSecond)) {
+        if (passwordFirst != passwordSecond) {
             viewBinding?.passwordSecondInput?.error = resources.getString(R.string.password_second_error)
         } else {
             viewBinding?.passwordSecondInput?.error = null
         }
     }
 
-    fun checkPassword (password : String) : Boolean {
-        val passwordPattern = "^(?=.*[!;%:?:%№#\$&*]).{6,}$".toRegex()
+    private fun checkPassword (password : String) : Boolean {
+        val passwordPattern = "^(?=.*[!;%:?№#$&*]).{6,}$".toRegex()
         return passwordPattern.matches(password)
     }
 

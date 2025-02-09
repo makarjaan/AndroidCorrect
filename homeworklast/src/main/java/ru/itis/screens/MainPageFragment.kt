@@ -31,6 +31,7 @@ import ru.itis.di.ServiceLocator
 import ru.itis.homeworklast.R
 import ru.itis.homeworklast.databinding.FragmentMainPageBinding
 import ru.itis.ui.ComposeListSample
+import ru.itis.util.Keys
 
 
 class MainPageFragment : BaseFragment(R.layout.fragment_main_page) {
@@ -39,9 +40,9 @@ class MainPageFragment : BaseFragment(R.layout.fragment_main_page) {
     private var userRepository = ServiceLocator.getUserRepository()
     private var bookRepository = ServiceLocator.getBookRepository()
     private var userId: String? = null
-    var user: UserEntity? = null
+    private var user: UserEntity? = null
     private var booksList: MutableList<BookEntity> = mutableListOf()
-    var pref: SharedPreferences? = null
+    private var pref: SharedPreferences? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -69,7 +70,7 @@ class MainPageFragment : BaseFragment(R.layout.fragment_main_page) {
             }.onFailure { ex ->
                 when (ex) {
                     is IllegalStateException -> {
-                        Log.e(MainActivity.ERROR_TAG, ex.message, ex)
+                        Log.e(Keys.ERROR_MESSAGE, ex.message, ex)
                     }
                     else -> {
                         Log.e(MainActivity.ERROR_TAG, "${resources.getString(R.string.load_er)} ${ex.message}", ex)
@@ -149,7 +150,7 @@ class MainPageFragment : BaseFragment(R.layout.fragment_main_page) {
         }
     }
 
-    fun onClick(book: BookEntity) {
+    private fun onClick(book: BookEntity) {
         user?.userName?.let { userName ->
             (requireActivity() as? MainActivity)?.addFragment(
                 DetailsFragment(userName = userName, bookId = book.bookId))
@@ -157,7 +158,7 @@ class MainPageFragment : BaseFragment(R.layout.fragment_main_page) {
     }
 
 
-    fun onLongClick(book: BookEntity) {
+    private fun onLongClick(book: BookEntity) {
         lifecycleScope.launch {
             runCatching {
                 withContext(Dispatchers.IO) {
