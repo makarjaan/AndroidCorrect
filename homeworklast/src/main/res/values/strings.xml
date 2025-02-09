@@ -1,0 +1,76 @@
+<resources>
+    <string name="app_name">homeworklast</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="email_edit">Введите адрес электронной почты</string>
+    <string name="email_input">Почта должна содержать символ @ - коммерческое at</string>
+    <string name="email_error">Введите корректный email</string>
+
+    <string name="password_edit">Введите пароль</string>
+    <string name="password2_edit">Повторите пароль</string>
+    <string name="password_error"> Пароль должен содержать: минимум 6 символов и хотя бы один специальный символ</string>
+    <string name="password_second_error">Пароли должны совпадать</string>
+    <string name="password_user_error">Введён неверный пароль</string>
+
+    <string name="name_edit">Введите имя пользователя</string>
+    <string name="name_error">Поле имения пользователя не может быть пустым</string>
+
+
+    <string name="authorization_btn">Авторизоваться</string>
+    <string name="registration_btn">Зарегистрироваться</string>
+
+
+    <string name="userindb_info">Пользователь с такой почтой уже существует</string>
+    <string name="user_not_inbd">Пользователь с такой почтой ещё не зарегестрирован</string>
+    <string name="info">У вас нет книг в коллекции</string>
+
+    <string name="bottom_main_text">Добавьте новую книгу в вашу коллекцию</string>
+    <string name="bottom_title">Введите название книги</string>
+    <string name="botton_author">Введите автора книги</string>
+    <string name="bottom_gallery">Загрузить изображение из галереи</string>
+    <string name="bootom_or">ИЛИ</string>
+    <string name="bottom_url">Введите URL изображения</string>
+    <string name="add">Добавить</string>
+    <string name="toolbar_description">Главное меню</string>
+    <string name="profile">Ваш профиль</string>
+    <string name="choose_genre">Выберите жанр</string>
+    <string name="book_image">Book image</string>
+    <string name="save">Сохранить</string>
+    <string name="star">Звезда</string>
+    <string name="revie_err">Error updating review:</string>
+    <string name="rating_err">Error updating rating:</string>
+    <string name="image_err">Error updating image:</string>
+
+
+    <string name="review">Краткое впечатление</string>
+    <string name="logout">Выйти</string>
+    <string-array name="planets_array">
+        <item>Выберите жанр</item>
+        <item>Классика</item>
+        <item>Фантастика</item>
+        <item>Фэнтези</item>
+        <item>Детектив</item>
+        <item>Триллер</item>
+        <item>Роман</item>
+        <item>Научная литература</item>
+        <item>Историческая литература</item>
+        <item>Поэзия</item>
+        <item>Приключения</item>
+        <item>Ужасы</item>
+    </string-array>
+    <string name="author">Автор:</string>
+    <string name="genre">Жанр:</string>
+    <string name="enter_review">Можете изменить впечатление о книге</string>
+
+
+    <string name="login_error">No such user was found in the database.</string>
+    <string name="book_save_error">Не удалось сохранить книгу.</string>
+    <string name="save_err">Error saving the book:</string>
+    <string name="save_user_error">Error saving the user:</string>
+    <string name="load_er">Error when uploading data:</string>
+    <string name="data_load_error">Не удалось загрузить данные.</string>
+    <string name="id_err">userId is null</string>
+    <string name="delete_error">Error deleting a book:</string>
+    <string name="book_delete_error">Не удалось удалить книгу из списка.</string>
+
+</resources>

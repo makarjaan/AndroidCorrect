@@ -23,3 +23,6 @@ rootProject.name = "AndroidCorrect"
 include(":app")
 include(":homework4")
 include(":homework5")
+include(":homework6")
+include(":homework62")
+include(":homeworklast")
