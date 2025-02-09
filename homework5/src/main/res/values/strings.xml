@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">homework5</string>
+    <string name="input_name">Число корутин</string>
+    <string name="courotine_type">Выберите способ запуска корутин</string>
+    <string name="courotine_work">Выберите логику работы корутин при сворачивании приложения</string>
+    <string name="courotine_start">Запустить выполнение корутин</string>
+    <string name="courotine_stop">Отменить выполнение корутин</string>
+    <string name="shared_preferences_name">com.homework5.app</string>
+    <string name="permission_need">Разрешение нужно</string>
+    <string name="givemepermissionplease">Перейдите в настройки и включите разрешение.</string>
+    <string name="open_setting">Открыть настройки</string>
+    <string name="not_fine_count">Поле с числом корутин пустое</string>
+    <string name="mistake">Ошибка:</string>
+    <string name="hope">Нет запущенных корутин</string>
+</resources>
